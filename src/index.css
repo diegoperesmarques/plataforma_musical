@@ -2,6 +2,13 @@ body {
 	font-family: 'Inter', sans-serif;
 }
 
+.dark-mode-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 50;
+}
+
 .clef-line-option {
 	display: none;
 }
