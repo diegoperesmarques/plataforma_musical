@@ -58,11 +58,17 @@ function Staff({ settings, notes }) {
             const y = middleY - note.position * step;
 
             // Ledger lines
-            if (note.position <= -5) { svg += `<line x1="${x - noteRadius * 1.8}" y1="${y}" x2="${x + noteRadius * 1.8}" y2="${y}" stroke="black" stroke-width="1.5"/>`; }
-            if (note.position <= -7) { svg += `<line x1="${x - noteRadius * 1.8}" y1="${y + lineSpacing}" x2="${x + noteRadius * 1.8}" y2="${y + lineSpacing}" stroke="black" stroke-width="1.5"/>`; }
-            if (note.position >= 5) { svg += `<line x1="${x - noteRadius * 1.8}" y1="${y}" x2="${x + noteRadius * 1.8}" y2="${y}" stroke="black" stroke-width="1.5"/>`; }
-            if (note.position >= 7) { svg += `<line x1="${x - noteRadius * 1.8}" y1="${y - lineSpacing}" x2="${x + noteRadius * 1.8}" y2="${y - lineSpacing}" stroke="black" stroke-width="1.5"/>`; }
-            if (note.position >= 9) { svg += `<line x1="${x - noteRadius * 1.8}" y1="${y - lineSpacing * 2}" x2="${x + noteRadius * 1.8}" y2="${y - lineSpacing * 2}" stroke="black" stroke-width="1.5"/>`; }
+            // Notes below the staff
+            for (let i = -6; i >= note.position; i -= 2) {
+                const lineY = middleY - i * step;
+                svg += `<line x1="${x - noteRadius * 1.8}" y1="${lineY}" x2="${x + noteRadius * 1.8}" y2="${lineY}" stroke="black" stroke-width="1.5"/>`;
+            }
+
+            // Notes above the staff
+            for (let i = 6; i <= note.position; i += 2) {
+                const lineY = middleY - i * step;
+                svg += `<line x1="${x - noteRadius * 1.8}" y1="${lineY}" x2="${x + noteRadius * 1.8}" y2="${lineY}" stroke="black" stroke-width="1.5"/>`;
+            }
 
             // Note head
             svg += `<circle cx="${x}" cy="${y}" r="${noteRadius}" fill="black" />`;
