@@ -14,6 +14,8 @@ Este documento detalha a estrutura de diretórios do projeto, fornecendo uma vis
 │   └───01_Introducao_a_Musica.md
 ├───public/
 │   └───index.html
+├───└───aulas/
+│       └───01_Introducao_a_Musica.md
 └───src/
     ├───App.js
     ├───index.css
