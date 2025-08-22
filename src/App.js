@@ -85,10 +85,14 @@ function App() {
     }
   };
 
+  const containerClass = currentScreen === SCREENS.LESSON_VIEW 
+    ? 'w-full' 
+    : 'p-4 sm:p-6 md:p-8';
+
   return (
     <div className={`w-full min-h-screen ${isDarkMode ? 'dark' : ''}`}>
       <DarkModeToggle onToggle={toggleDarkMode} isDarkMode={isDarkMode} />
-      <div className="p-4 sm:p-6 md:p-8">
+      <div className={containerClass}>
         {renderScreen()}
       </div>
     </div>

@@ -39,13 +39,15 @@ function LessonView({ lessonFile, onBackToList, onBackToMainMenu }) {
 
     return (
         <div>
-            <h1 className="text-3xl font-bold mb-4 border-b pb-3">{formatLessonName(lessonFile)}</h1>
-            <div className="prose max-w-none w-full lesson-prose">
+            <div className="p-4 sm:p-6 md:p-8">
+                <h1 className="text-3xl font-bold mb-4 border-b pb-3">{formatLessonName(lessonFile)}</h1>
+            </div>
+            <div className="prose max-w-none w-full lesson-prose px-4 sm:px-6 md:px-8">
                 {isLoading && <p>Carregando aula...</p>}
                 {error && <p className="text-red-600 font-semibold">Erro ao carregar a aula. Verifique se o arquivo "{lessonFile}" existe na pasta "aulas".</p>}
                 <div dangerouslySetInnerHTML={{ __html: content }} />
             </div>
-            <div className="mt-8 space-y-3">
+            <div className="p-4 sm:p-6 md:p-8 mt-8 space-y-3">
                  <button onClick={onBackToList} className="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">
                     Voltar para a Lista de Aulas
                 </button>
