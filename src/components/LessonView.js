@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { marked } from 'marked';
+import marked from 'marked';
 
 function formatLessonName(filename) {
     if (!filename) return '';
@@ -20,11 +20,12 @@ function LessonView({ lessonFile, onBackToList, onBackToMainMenu }) {
             try {
                 const response = await fetch(`/aulas/${lessonFile}`);
                 if (!response.ok) {
+                    console.error('Fetch failed with response:', response);
                     throw new Error('Não foi possível carregar o arquivo da aula.');
                 }
                 const markdown = await response.text();
                 console.log('Markdown content:', markdown);
-                setContent(marked.parse(markdown));
+                setContent(marked(markdown));
             } catch (err) {
                 setError(err.message);
                 setContent('');
